@@ -165,6 +165,27 @@
             $this->assertEquals($new_brand_name->getStores(), [$new_store]);
         }
 
+        function test_getStores()
+        {
+            $brand_name = "Nike";
+            $id = null;
+            $new_brand_name = new Brand($brand_name, $id);
+            $new_brand_name->save();
 
+            $store_name = "Footlocker";
+            $id = 2;
+            $new_store = new Store($store_name, $id);
+            $new_store->save();
+
+            $store_name2 = "Foot Traffic";
+            $id2 = 2;
+            $new_store2 = new Store($store_name2, $id2);
+            $new_store2->save();
+
+            $new_brand_name->addStore($new_store);
+            $new_brand_name->addStore($new_store2);
+
+            $this->assertEquals($new_brand_name->getStores(), [$new_store, $new_store2]);
+        }
     }
 ?>
