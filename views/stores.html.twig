@@ -1,0 +1,31 @@
+{{ include('base.html.twig') }}
+
+<body>
+    <div class="container">
+        <h1>JB's Distribution</h1>
+
+        <li><a href="/">See Brands</a></li>
+
+        <form action='/stores' method='post' class="form-group">
+            <label for='store-name'>Enter new store:</label>
+            <input id='store-name' name='store-name' type='text' class="form-control">
+
+            <button type='submit' class="btn btn-lg btn-success">Add</button>
+        </form>
+        <form action='/delete-store' method='post'>
+            <button type='submit' class="btn btn-md btn-danger">Clear</button>
+        </form>
+
+            {% if stores is not empty %}
+            <div class="well" id="stores-pg1">
+            <p>Featured stores:</p>
+            <ul>
+                {% for store in stores %}
+                <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
