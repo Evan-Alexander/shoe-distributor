@@ -96,9 +96,5 @@
                 }
                 return $stores;
         }
-
-
     }
-
-
 ?>
