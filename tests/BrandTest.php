@@ -98,6 +98,23 @@
             $this->assertEquals([$new_brand_name, $new_brand2], $result);
         }
 
+        function test_find()
+        {
+            $brand_name = "King";
+            $id = null;
+            $new_brand = new Brand($brand_name, $id);
+            $new_brand->save();
+
+            $brand_name2 = "Kong";
+            $id2 = 1;
+            $new_brand2 = new Brand($brand_name2, $id2);
+            $new_brand2->save();
+
+            $result = Brand::find($new_brand2->getId());
+
+            $this->assertEquals($new_brand2, $result);
+        }
+
 
     }
 ?>

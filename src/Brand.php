@@ -10,14 +10,17 @@
             $this->brand_name = $brand_name;
             $this->id =  $id;
         }
+
         function getBrandName()
         {
             return $this->brand_name;
         }
+
         function setBrandName($new_brand)
         {
             $this->brand_name = (string) $new_brand;
         }
+
         function getId()
         {
             return $this->id;
@@ -41,11 +44,27 @@
             }
             return $brands;
         }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands;");
             $GLOBALS['DB']->exec("DELETE FROM brands_stores;");
         }
+
+        static function find($search_id)
+        {
+            $found_brand = null;
+            $brands = Brand::getAll();
+            foreach ($brands as $brand) {
+                $brand_id = $brand->getId();
+                if ($brand_id == $search_id) {
+                    $found_brand = $brand;
+                }
+            }
+            return $found_brand;
+        }
+
+
     }
 
 
