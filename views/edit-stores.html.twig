@@ -2,9 +2,9 @@
 
 <body>
         <div class="container">
-            <li><a  href="/">Home</a></li>
 
-            <h1>Edit {{ store.`getStoreName` }} info:</h1>
+            <h1>Edit {{ store.getStoreName }} info:</h1>
+            <li><a  href="/">Home</a></li>
             <div class="well">
                 <form name="new-store" action="/stores/{{store.getId}}" method="post">
                     <input name="_method" type="hidden" value = "patch">
@@ -22,10 +22,10 @@
                     <button class="btn btn-info add" type="submit" name="button">Update</button>
                 </form>
 
-                    <p>brand(s) by {{ store.getStoreName }}</p>
+                    <p>{{ store.getStoreName }} carries these brands:</p>
                     <ul>
                         {% for brand in brands %}
-                            <li>{{ brand.getBrandName }}</li>
+                            <li><a href="/brands/{{ brand.getId }}">{{ brand.getbrandName }}</a></li>
                         {% endfor %}
                     </ul>
 

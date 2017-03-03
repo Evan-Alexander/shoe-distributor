@@ -10,14 +10,14 @@
             <label for='brand-name'>Enter new brand:</label>
             <input id='brand-name' name='brand-name' type='text' class="form-control">
 
-            <button type='submit' class="btn btn-lg btn-success">Add</button>
+            <button type='submit' class="btn btn-md btn-info">Add</button>
         </form>
         <form action='/delete-brand' method='post'>
             <button type='submit' class="btn btn-md btn-danger">Clear</button>
         </form>
 
             {% if brands is not empty %}
-            <div class="well" id="brands-pg1">
+        <div class="well" id="brands-pg1">
             <p>Featured brands:</p>
             <ul>
                 {% for brand in brands %}
@@ -27,5 +27,6 @@
             </ul>
             {% endif %}
         </div>
+
     </div>
 </body>

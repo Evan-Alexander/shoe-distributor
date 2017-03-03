@@ -23,7 +23,7 @@
                     <p>store(s)</p>
                     <ul>
                         {% for store in stores %}
-                            <li>{{ store.getStoreName }}</li>
+                        <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
                         {% endfor %}
                     </ul>
 

@@ -86,6 +86,7 @@
         $new_brand = new Brand($_POST['add-brand']);
         $new_brand->save();
         $store = Store::find($id);
+        $store->addBrand($new_brand);
         return $app->redirect('/stores/'. $id);
     });
     return $app;
