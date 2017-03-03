@@ -80,5 +80,24 @@
 
             $this->assertEquals([], $result);
         }
+
+        function test_getAll()
+        {
+            $brand_name = "Nike";
+            $id = null;
+            $new_brand_name = new Brand($brand_name, $id);
+            $new_brand_name->save();
+
+            $brand2 = "Adidas";
+            $id = null;
+            $new_brand2 = new Brand($brand2, $id);
+            $new_brand2->save();
+
+            $result = Brand::getAll();
+
+            $this->assertEquals([$new_brand_name, $new_brand2], $result);
+        }
+
+
     }
 ?>
