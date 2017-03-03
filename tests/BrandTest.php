@@ -46,5 +46,17 @@
 
             $this->assertEquals($id, $result);
         }
+
+        function test_save()
+        {
+            $brand_name = "Nike";
+            $id = null;
+            $new_brand = new Brand($brand_name, $id);
+            $new_brand->save();
+
+            $result = Brand::getAll();
+
+            $this->assertEquals([$new_brand], $result);
+        }
     }
 ?>
