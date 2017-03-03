@@ -13,7 +13,7 @@ An app for a shoe distributor to keep track of brands of shoes and stores that s
 * /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
 * CREATE DATABASE shoes;
 * USE shoes;
-* CREATE TABLE brands (id serial PRIMARY KEY, brand_name VARCHAR       (255), majot VARCHAR(255));
+* CREATE TABLE brands (id serial PRIMARY KEY, brand_name VARCHAR (255));
 
 * CREATE TABLE stores (id serial PRIMARY KEY, store_name VARCHAR(255));
 
