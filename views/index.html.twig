@@ -1,0 +1,46 @@
+{{ include('base.html.twig') }}
+<body>
+    <div class="container">
+        <h1>JB's Shoe Distribution</h1>
+        <div id="store-select">
+            <h3>Brands</h3>
+        {% if brands is not empty %}
+        <ul>
+            {% for brand in brands %}
+                <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+            {% endfor %}
+
+        </ul>
+        {% endif %}
+
+        <form action='/' method='post' class="form-group">
+            <label for='brand-name'>Brand name</label>
+            <input id='brand-name' name='brand-name' type='text' class="form-control" required="">
+
+            <button type='submit' class="btn btn-lg btn-success">Add </button>
+        </form>
+        <form action='/delete_brands' method='post'>
+            <button type='submit' class="btn btn-md btn-danger">Clear </button>
+        </form>
+        </div>
+        <div id="brand-select">
+            <h3>Stores</h3>
+            {% if stores is not empty %}
+                <ul>
+                    {% for store in stores %}
+                        <li><a href="/stores/{{ store.getId }}">{{ store.getstoreName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action='/store' method='post' class="form-group">
+                <label for="store-name">Store Name</label>
+                <input id="store-name" type="text" name="store-name" class="form-control" required="">
+
+                <button type='submit' class="btn btn-lg btn-success">Add </button>
+            </form>
+            <form action='/delete_stores' method='post'>
+                <button type='submit' class="btn btn-md btn-danger">Clear </button>
+            </form>
+        </div>
+    </div>
+</body>
