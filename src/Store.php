@@ -70,6 +70,12 @@
             $this->setStoreName($new_name);
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()}");
+            $GLOBALS['DB']->exec("DELETE FROM stores_stores WHERE store_id = {$this->getId()}");
+        }
+
 
     }
 ?>
