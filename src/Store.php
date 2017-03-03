@@ -64,6 +64,12 @@
             return $found_store;
         }
 
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET store_name = '{$new_name}' WHERE id = {$this->getId()}");
+            $this->setStoreName($new_name);
+        }
+
 
     }
 ?>

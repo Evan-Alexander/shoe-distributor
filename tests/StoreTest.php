@@ -114,6 +114,21 @@ class StoreTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($new_store2, $result);
     }
+
+    function test_update()
+    {
+        $store_name = "Foo Traffic";
+        $id = null;
+        $new_store_name = new Store($store_name, $id);
+        $new_store_name->save();
+
+        $replacement_name = "Foot Traffic";
+        $new_store_name->update($replacement_name);
+
+        $result = $new_store_name->getstoreName();
+
+        $this->assertEquals($replacement_name, $result);
+    }
 }
 
 ?>
