@@ -115,6 +115,21 @@
             $this->assertEquals($new_brand2, $result);
         }
 
+        function test_update()
+        {
+            $brand_name = "King";
+            $id = null;
+            $new_brand = new Brand($brand_name, $id);
+            $new_brand->save();
+
+            $new_brand_name = "Stephen";
+            $new_brand->update($new_brand_name);
+
+            $result = $new_brand->getbrandName();
+            
+            $this->assertEquals($new_brand_name, $result);
+        }
+
 
     }
 ?>
