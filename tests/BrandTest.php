@@ -100,14 +100,14 @@
 
         function test_find()
         {
-            $brand_name = "King";
+            $brand_name = "Nike";
             $id = null;
-            $new_brand = new Brand($brand_name, $id);
-            $new_brand->save();
+            $new_brand_name = new Brand($brand_name, $id);
+            $new_brand_name->save();
 
-            $brand_name2 = "Kong";
-            $id2 = 1;
-            $new_brand2 = new Brand($brand_name2, $id2);
+            $brand2 = "Adidas";
+            $id = null;
+            $new_brand2 = new Brand($brand2, $id);
             $new_brand2->save();
 
             $result = Brand::find($new_brand2->getId());
@@ -117,17 +117,35 @@
 
         function test_update()
         {
-            $brand_name = "King";
+            $brand_name = "Nik";
             $id = null;
-            $new_brand = new Brand($brand_name, $id);
-            $new_brand->save();
+            $new_brand_name = new Brand($brand_name, $id);
+            $new_brand_name->save();
 
-            $new_brand_name = "Stephen";
-            $new_brand->update($new_brand_name);
+            $replacement_name = "Nike";
+            $new_brand_name->update($replacement_name);
 
-            $result = $new_brand->getbrandName();
-            
-            $this->assertEquals($new_brand_name, $result);
+            $result = $new_brand_name->getBrandName();
+
+            $this->assertEquals($replacement_name, $result);
+        }
+
+        function test_delete()
+        {
+            $brand_name = "Nike";
+            $id = null;
+            $new_brand_name = new Brand($brand_name, $id);
+            $new_brand_name->save();
+
+            $brand2 = "Adidas";
+            $id = null;
+            $new_brand2 = new Brand($brand2, $id);
+            $new_brand2->save();
+
+            $new_brand_name->delete();
+            $result = Brand::getAll();
+
+            $this->assertEquals([$new_brand2], $result);
         }
 
 
