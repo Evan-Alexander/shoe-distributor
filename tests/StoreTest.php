@@ -35,17 +35,17 @@ class StoreTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($store_name2, $result);
     }
-    //
-    // function test_getId()
-    // {
-    //     $store_name = "Footlocker";
-    //     $id = 2;
-    //     $new_store = new Store($store_name, $id);
-    //
-    //     $result = $new_store->getId();
-    //
-    //     $this->assertEquals($id, $result);
-    // }
+    
+    function test_getId()
+    {
+        $store_name = "Footlocker";
+        $id = 2;
+        $new_store = new Store($store_name, $id);
+
+        $result = $new_store->getId();
+
+        $this->assertEquals($id, $result);
+    }
 }
 
 ?>
