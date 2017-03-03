@@ -12,6 +12,10 @@ $DB = new PDO($server, $username, $password);
 
 class StoreTest extends PHPUnit_Framework_TestCase
 {
+    function tearDown()
+    {
+        Store::deleteAll();
+    }
 
     function test_getStoreName()
     {
@@ -35,7 +39,7 @@ class StoreTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($store_name2, $result);
     }
-    
+
     function test_getId()
     {
         $store_name = "Footlocker";
@@ -45,6 +49,18 @@ class StoreTest extends PHPUnit_Framework_TestCase
         $result = $new_store->getId();
 
         $this->assertEquals($id, $result);
+    }
+
+    function test_save()
+    {
+        $store_name = "Foot Traffic";
+        $id = null;
+        $new_store = new Store($store_name, $id);
+        $new_store->save();
+
+        $result = Store::getAll();
+
+        $this->assertEquals([$new_store], $result);
     }
 }
 
