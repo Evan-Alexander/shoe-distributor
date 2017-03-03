@@ -17,19 +17,24 @@
         {
             $brand_name = "Nike";
             $new_brand = new Brand($brand_name);
+
             $result = $new_brand->getBrandName();
+            
             $this->assertEquals($brand_name, $result);
         }
 
-        // function test_setBrandName()
-        // {
-        //     $name = "Nike";
-        //     $new_brand = new Brand($name);
-        //     $name2 = "Adidas";
-        //     $new_brand->setBrandName($name2);
-        //     $result = $new_brand->getBrandName();
-        //     $this->assertEquals($name2, $result);
-        // }
+        function test_setBrandName()
+        {
+            $brand_name = "Nike";
+            $new_brand = new Brand($brand_name);
+
+            $brand_name2 = "Adidas";
+            $new_brand->setBrandName($brand_name2);
+
+            $result = $new_brand->getBrandName();
+
+            $this->assertEquals($brand_name2, $result);
+        }
         //
         // function test_getId()
         // {
