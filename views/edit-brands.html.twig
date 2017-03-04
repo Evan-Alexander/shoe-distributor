@@ -19,8 +19,7 @@
 
                     <button class="btn btn-info add" type="submit" name="button">Update</button>
                 </form>
-
-                    <p>store(s)</p>
+                    <p>Retailers carrying: {{ brand.getbrandName }}</p>
                     <ul>
                         {% for store in stores %}
                         <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>

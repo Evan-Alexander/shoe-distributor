@@ -21,8 +21,13 @@
 
                     <button class="btn btn-info add" type="submit" name="button">Update</button>
                 </form>
+                <form action='/delete-brand-from-store/' method='post'>
+                    <input type="hidden" name="_method" value="delete">
+                    <label for="submit">Delete from this store.</label>
+                    <button type='submit' class="btn btn-md btn-danger">Delete</button>
+                </form>
 
-                    <p>{{ store.getStoreName }} carries these brands:</p>
+                    <p>Brands carried by {{ store.getStoreName }}:</p>
                     <ul>
                         {% for brand in brands %}
                             <li><a href="/brands/{{ brand.getId }}">{{ brand.getbrandName }}</a></li>
