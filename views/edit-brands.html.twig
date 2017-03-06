@@ -1,30 +1,35 @@
 {{ include('base.html.twig') }}
 <body>
-    <div class="container">
-        <h1>Edit {{ brand.getBrandName }} info:</h1>
-        <li><a  href="/">Home</a></li>
-        <div class="well">
-            <form name="new-brand" action="/brands/{{ brand.getId }}" method="post">
-                <input name="_method" type="hidden" value="patch">
-                <input id="id" type="hidden" name="id" value="{{ brand.getId() }}">
-                <label for="new-brand">Edit brand name</label>
-                <input id="new-brand" type="text" name="new-brand" class="form-control">
+        <div class="container">
+            <h1>Edit {{ brand.getBrandName }} info:</h1>
+            <li><a  href="/">Home</a></li>
+            <div class="well">
+                <form name="new-brand" action="/brands/{{ brand.getId }}" method="post">
+                    <input name="_method" type="hidden" value = "patch">
+                    <input id="id" type="hidden" name="id" value="{{ brand.getId() }}">
+                    <label for="new-brand">Edit brand name</label>
+                    <input id="new-brand" type="text" name="new-brand" class="form-control">
 
-                <button class="btn btn-info add" type="submit" name="button">Update</button>
-            </form>
+                    <button class="btn btn-info add" type="submit" name="button">Update</button>
+                </form>
 
-            <form class="" action="/update/{{ brand.getId }}" method="post">
-                <label for="add-store">Add new store now carrying {{ brand.getBrandName }}</label>
-                <input class="form-control" type="text" name="add-store">
+                <form class="" action="/update/{{ brand.getId }}" method="post">
+                    <label for="add-store">Add new store now carrying {{ brand.getBrandName }}</label>
+                    <input class="form-control" type="text" name="add-store">
 
-                <button class="btn btn-info add" type="submit" name="button">Add</button>
-            </form>
-            <p>Retailers carrying: {{ brand.getBrandName }}</p>
-            <ul>
-                {% for store in stores %}
-                <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
-                {% endfor %}
-            </ul>
+                    <button class="btn btn-info add" type="submit" name="button">Add</button>
+                </form>
+                <form class="form-group" action="/delete-brand/{{brand.getId}}"  method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button id="delete" class="btn btn-danger" type="submit">Delete {{ brand.getBrandName }}</button>
+                </form>
+                    <p>Retailers carrying: {{ brand.getBrandName }}</p>
+                    <ul>
+                        {% for store in stores %}
+                        <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+            </div>
         </div>
-    </div>
-</body>
+    </body>

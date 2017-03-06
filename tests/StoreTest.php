@@ -185,7 +185,7 @@
 
             $new_store_name->addbrand($new_brand);
             $new_store_name->addbrand($new_brand2);
-            $this->assertEquals($new_store_name->getbrands(), [$new_brand, $new_brand2]);
+            $this->assertEquals($new_store_name->getBrands(), [$new_brand, $new_brand2]);
         }
     }
 ?>
