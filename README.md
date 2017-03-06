@@ -24,7 +24,7 @@ An app for a shoe distributor to keep track of brands of shoes and stores that s
 &nbsp;
 ## Specifications
 
-|Behavior - Store View| Input 1| Output|
+|Behavior - Store View | Input 1| Output|
 |--------|-------|------|
 | Input brand name . | "Nike" | "Nike" |
 | Inputs another brand. | "Adidas" | " Nike", "Adidas" |
@@ -34,7 +34,7 @@ An app for a shoe distributor to keep track of brands of shoes and stores that s
 | Update store name. |(original - "Adidas facorey outlet") "Adidas Factory Outlet"| "Adidas Factory Outlet" |
 | Find brands by store. | "Macys"| "Nike, Adidas, Timberlands"|
 
-|Behavior - Brand View| Input 1| Output|
+|Behavior - Brand View | Input 1| Output|
 |--------|-------|------|
 | Input store name. | "Footlocker" | "Footlocker" |
 | Inputs another store. | "Payless" | " Footlocker", "Payless" |

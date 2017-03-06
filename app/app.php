@@ -32,9 +32,8 @@
         return $app->redirect('/');
     });
 
-    $app->post("/delete-brand", function() use ($app) {
+    $app->post("/delete-brands", function() use ($app) {
         Brand::deleteAll();
-        Store::deleteAll();
         return $app->redirect('/');
     });
 
@@ -46,11 +45,9 @@
     $app->patch("/brands/{id}", function($id) use ($app) {
         $brand = Brand::find($id);
         $brand->update($_POST['new-brand']);
-        return $app['twig']->render('edit-brands.html.twig', array('brand' => $brand, 'stores' => $brand->getstores(), 'all_stores' => Store::getAll()));
+        return $app['twig']->render('edit-brands.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
-         /* When trying to use redirect method here return $app->redirect('/brands/'. $id);
-         I get a notification that the page is written in Afrikaans and Google asks if the viewer
-         wants translation.  */
+
     $app->post("/update/{id}", function($id) use ($app) {
         $new_store = new Store($_POST['add-store']);
         $new_store->save();
@@ -67,16 +64,15 @@
     $app->post("/stores", function() use ($app) {
         $store = new Store($_POST['store-name']);
         $store->save();
-        return $app->redirect('/store');
+        return $app->redirect('/stores');
     });
 
-    $app->post("/delete-store", function() use ($app) {
-        Brand::deleteAll();
+    $app->post("/delete-stores", function() use ($app) {
         Store::deleteAll();
-        return $app->redirect('/');
+        return $app->redirect('/stores');
     });
 
-    $app->get('stores/{id}', function($id) use ($app) {
+    $app->get('/stores/{id}', function($id) use ($app) {
         $store = Store::find($id);
         return $app['twig']->render('edit-stores.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
@@ -84,7 +80,7 @@
     $app->patch("/stores/{id}", function($id) use ($app) {
         $store = Store::find($id);
         $store->update($_POST['new-store']);
-        return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getbrands(), 'all_brands' => Brand::getAll()));
+        return $app['twig']->render('edit-stores.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
     $app->post("/update-store/{id}", function($id) use ($app) {
@@ -92,13 +88,13 @@
         $new_brand->save();
         $store = Store::find($id);
         $store->addBrand($new_brand);
-        return $app->redirect('/stores/'. $id);
+        return $app['twig']->render('edit-stores.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
-    $app->delete("/delete-brand-from-store/{id}", function($id) use ($app) {
-        $brand = Brand::find($id);
-        $brand->delete();
-        return $app['twig']->render('edit-stores.html.twig', array('brand' => Brand::find($id),'stores' => Store::getAll()));
+    $app->delete("/delete-store/{id}", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->delete();
+        return $app['twig']->render('edit-stores.html.twig', array('store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 
     return $app;
