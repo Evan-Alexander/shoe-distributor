@@ -1,31 +1,38 @@
-{{ include('base.html.twig') }}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700" rel="stylesheet">
+        <link href="{{ app.request.getbaseurl }}/assets/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoe Distributor</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>JB's Distribution</h1>
 
-<body>
-    <div class="container">
-        <h1>JB's Distribution</h1>
+            <li><a href="/">See Brands</a></li>
 
-        <li><a href="/">See Brands</a></li>
+            <form action='/stores' method='post' class="form-group">
+                <label for='store-name'>Enter new store:</label>
+                <input id='store-name' name='store-name' type='text' class="form-control">
 
-        <form action='/stores' method='post' class="form-group">
-            <label for='store-name'>Enter new store:</label>
-            <input id='store-name' name='store-name' type='text' class="form-control">
-
-            <button type='submit' class="btn btn-md btn-info">Add</button>
-        </form>
-        <form action='/delete-stores' method='post'>
-            <button type='submit' class="btn btn-md btn-danger">Delete All Stores</button>
-        </form>
+                <button type='submit' class="btn btn-md btn-info">Add</button>
+            </form>
+            <form action='/delete-stores' method='post'>
+                <button type='submit' class="btn btn-md btn-danger">Delete All Stores</button>
+            </form>
 
             {% if stores is not empty %}
             <div class="well" id="stores-pg1">
-            <p>Featured stores:</p>
-            <ul>
-                {% for store in stores %}
-                <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
-                {% endfor %}
+                <p>Featured stores:</p>
+                <ul>
+                    {% for store in stores %}
+                    <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                    {% endfor %}
 
-            </ul>
-            {% endif %}
+                </ul>
+                {% endif %}
+            </div>
         </div>
-    </div>
-</body>
+    </body>
+</html>

@@ -1,32 +1,39 @@
-{{ include('base.html.twig') }}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700" rel="stylesheet">
+        <link href="{{ app.request.getbaseurl }}/assets/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoe Distributor</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>JB's Shoe Distributors</h1>
 
-<body>
-    <div class="container">
-        <h1>JB's Shoe Distributors</h1>
+            <li><a href="/stores">See Stores</a></li>
 
-        <li><a href="/stores">See Stores</a></li>
+            <form action='/' method='post' class="form-group">
+                <label for='brand-name'>Enter new brand:</label>
+                <input id='brand-name' name='brand-name' type='text' class="form-control">
 
-        <form action='/' method='post' class="form-group">
-            <label for='brand-name'>Enter new brand:</label>
-            <input id='brand-name' name='brand-name' type='text' class="form-control">
-
-            <button type='submit' class="btn btn-md btn-info">Add</button>
-        </form>
-        <form action='/delete-brands' method='post'>
-            <button type='submit' class="btn btn-md btn-danger">Delete All Brands</button>
-        </form>
+                <button type='submit' class="btn btn-md btn-info">Add</button>
+            </form>
+            <form action='/delete-brands' method='post'>
+                <button type='submit' class="btn btn-md btn-danger">Delete All Brands</button>
+            </form>
 
             {% if brands is not empty %}
-        <div class="well" id="brands-pg1">
-            <p>Featured brands:</p>
-            <ul>
-                {% for brand in brands %}
-                <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
-                {% endfor %}
+            <div class="well" id="brands-pg1">
+                <p>Featured brands:</p>
+                <ul>
+                    {% for brand in brands %}
+                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+                    {% endfor %}
 
-            </ul>
-            {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+
         </div>
-
-    </div>
-</body>
+    </body>
+</html>

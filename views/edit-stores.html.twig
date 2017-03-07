@@ -1,43 +1,52 @@
-{{ include('base.html.twig') }}
-<body>
-    <div class="container">
-        <h1>Edit {{ store.getStoreName }} info:</h1>
-        <li><a  href="/">Home</a></li>
-        <div class="well">
-            <form name="new-store" action="/stores/{{store.getId}}" method="post">
-                <input name="_method" type="hidden" value="patch">
-                <input id="id" type="hidden" name="id" value="{{ store.getId() }}">
-                <label for="new-store">Edit store name</label>
-                <input id="new-store" type="text" name="new-store" class="form-control">
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700" rel="stylesheet">
+        <link href="{{ app.request.getbaseurl }}/assets/css/styles.css" rel="stylesheet" type="text/css">
+        <title>Shoe Distributor</title>
+    </head>
 
-                <button class="btn btn-info add" type="submit" name="button">Update</button>
-            </form>
+    <body>
+        <div class="container">
+            <h1>Edit {{ store.getStoreName }} info:</h1>
+            <li><a  href="/">Home</a></li>
+            <div class="well">
+                <form name="new-store" action="/stores/{{store.getId}}" method="post">
+                    <input name="_method" type="hidden" value="patch">
+                    <input id="id" type="hidden" name="id" value="{{ store.getId() }}">
+                    <label for="new-store">Edit store name</label>
+                    <input id="new-store" type="text" name="new-store" class="form-control">
 
-            <h4>Add a brand to this store:</h4>
+                    <button class="btn btn-info add" type="submit" name="button">Update</button>
+                </form>
 
-            <form action='/add_brand' method='post'>
-                <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
-                <label for="brand_id">Select a brand</label>
-                <select id='brand_id' name='brand_id' type='text'>
-                  {% for brand in all_brands %}
-                    <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
-                  {% endfor %}
-                </select>
-                <button type='submit'>Add brand</button>
-            </form>
-            <p>Brands carried by {{ store.getStoreName }}:</p>
-            <ul>
-                {% for brand in brands %}
+                <h4>Add a brand to this store:</h4>
+
+                <form action='/add_brand' method='post'>
+                    <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+                    <label for="brand_id">Select a brand</label>
+                    <select id='brand_id' name='brand_id' type='text'>
+                        {% for brand in all_brands %}
+                        <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
+                        {% endfor %}
+                    </select>
+                    <button type='submit'>Add brand</button>
+                </form>
+                <p>Brands carried by {{ store.getStoreName }}:</p>
+                <ul>
+                    {% for brand in brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
-                {% endfor %}
+                    {% endfor %}
 
-            </ul>
-            {% if stores is not empty %}
-            <form class="form-group" action="/delete-store/{{store.getId}}"  method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button id="delete" class="btn btn-danger" type="submit">Delete {{ store.getStoreName }}</button>
-            </form>
-            {% endif %}
+                </ul>
+                {% if stores is not empty %}
+                <form class="form-group" action="/delete-store/{{store.getId}}"  method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button id="delete" class="btn btn-danger" type="submit">Delete {{ store.getStoreName }}</button>
+                </form>
+                {% endif %}
+            </div>
         </div>
-    </div>
-</body>
+    </body>
+</html>

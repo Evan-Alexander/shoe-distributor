@@ -1,0 +1,48 @@
+body {
+    margin-top: 7.5%;
+    margin-left: 7.5%;
+    background-color: #e8dcc7;
+}
+
+.well {
+    margin-top: 1%;
+    width: 50%;
+}
+
+button {
+    margin: 1% 1%;
+    border: none;
+}
+
+.form-control {
+    width: 50%;
+    margin-bottom: .2%;
+}
+
+li {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.well li {
+    font-size: 1.2em;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-top: 2%;
+}
+
+p {
+    font-size: 1.8em;
+}
+
+a {
+    font-size: 1.6em;
+}
+
+
+input {
+    width: 35%;
+}
