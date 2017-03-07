@@ -12,24 +12,28 @@
 
                     <button class="btn btn-info add" type="submit" name="button">Update</button>
                 </form>
-
-                <form class="" action="/update/{{ brand.getId }}" method="post">
-                    <label for="add-store">Add new store now carrying {{ brand.getBrandName }}</label>
-                    <input class="form-control" type="text" name="add-store">
-
-                    <button class="btn btn-info add" type="submit" name="button">Add</button>
+                <h3>Add a store to this brand.</h3>
+                <form action='/add_store' method='post'>
+                    <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+                    <label for="store_id">Select a store</label>
+                    <select id='store_id' name='store_id' type='text'>
+                        {% for store in all_stores %}
+                            <option value="{{ store.getId }}"> {{ store.getStoreName }} </option>
+                        {% endfor %}
+                    </select>
+                    <button type='submit'>Add store</button>
                 </form>
+
                 <form class="form-group" action="/delete-brand/{{brand.getId}}"  method="post">
                     <input type="hidden" name="_method" value="delete">
                     <button id="delete" class="btn btn-danger" type="submit">Delete {{ brand.getBrandName }}</button>
                 </form>
-                    <p>Retailers carrying: {{ brand.getBrandName }}</p>
-                    <ul>
-                        {% for store in stores %}
-                        <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
-                        {% endfor %}
-                    </ul>
-
+                <p>Retailers carrying: {{ brand.getBrandName }}</p>
+                <ul>
+                    {% for store in stores %}
+                    <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </body>

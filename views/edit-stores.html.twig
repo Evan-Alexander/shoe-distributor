@@ -13,22 +13,31 @@
                 <button class="btn btn-info add" type="submit" name="button">Update</button>
             </form>
 
-            <form class="" action="/update-store/{{ store.getId }}" method="post">
-                <label for="add-brand">Add a brand to {{ store.getStoreName }}</label>
-                <input class="form-control" type="text" name="add-brand">
+            <h4>Add a brand to this store:</h4>
 
-                <button class="btn btn-info add" type="submit" name="button">Add</button>
-            </form>
-            <form class="form-group" action="/delete-store/{{store.getId}}"  method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button id="delete" class="btn btn-danger" type="submit">Delete {{ store.getStoreName }}</button>
+            <form action='/add_brand' method='post'>
+                <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+                <label for="brand_id">Select a brand</label>
+                <select id='brand_id' name='brand_id' type='text'>
+                  {% for brand in all_brands %}
+                    <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
+                  {% endfor %}
+                </select>
+                <button type='submit'>Add brand</button>
             </form>
             <p>Brands carried by {{ store.getStoreName }}:</p>
             <ul>
                 {% for brand in brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
                 {% endfor %}
+
             </ul>
+            {% if stores is not empty %}
+            <form class="form-group" action="/delete-store/{{store.getId}}"  method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button id="delete" class="btn btn-danger" type="submit">Delete {{ store.getStoreName }}</button>
+            </form>
+            {% endif %}
         </div>
     </div>
 </body>
